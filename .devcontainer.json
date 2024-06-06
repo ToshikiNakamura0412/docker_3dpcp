@@ -1,0 +1,13 @@
+{
+    "name": "3dpcp Container",
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "ws",
+    "workspaceFolder": "/home/user",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python"
+            ]
+        }
+    }
+}

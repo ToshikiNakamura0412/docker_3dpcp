@@ -1,0 +1,26 @@
+services:
+  ws:
+    container_name: 3dpcp_ws
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ipc: host
+    tty: true
+    privileged: true
+    environment:
+      TERM: screen-256color
+      LANG: C.UTF-8
+      DISPLAY: $DISPLAY
+      NVIDIA_DRIVER_CAPABILITIES: all
+    volumes:
+      - type: bind
+        source: /tmp/.X11-unix
+        target: /tmp/.X11-unix
+    command: /bin/bash -c "sudo apt update && bash"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [ gpu ]
